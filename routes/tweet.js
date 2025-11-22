@@ -6,7 +6,7 @@ const Hashtag = require('../models/hashtag');
 require('../models/connection');
 const Tweet = require('../models/tweet');
 
-// POST un nouveau tweet
+// POST a new tweet
 router.post('/', (req, res) => {
     if (!req.body.token || !req.body.content) {
         res.json({ result: false, error: "Missing token or content" });
@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
 });
 
 
-// GET tous les tweets
+// GET all tweets
 router.get('/', (req, res) => {
     Tweet.find({})
         .populate('user', 'username')
