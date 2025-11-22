@@ -24,6 +24,8 @@ router.post('/', (req, res) => {
 // GET all hashtags
 router.get('/', (req, res) => {
     Hashtag.find({})
+        .sort({ count: -1 })
+        .limit(10)
         .then(tags => res.json({ result: true, hashtags: tags }))
         .catch(err => res.json({ result: false, error: err.message }));
 });
